@@ -8,8 +8,7 @@ describe('GetThreadUseCase', () => {
     it('should throw NotFoundError when thread not found', async () => {
         // Arrange
         const mockThreadRepository = new ThreadRepository();
-        mockThreadRepository.getById = jest.fn()
-            .mockImplementation(() => Promise.reject(new NotFoundError('Thread tidak ditemukan')));
+        mockThreadRepository.getById = jest.fn(() => Promise.reject(new NotFoundError('Thread tidak ditemukan')));
         const getThreadUseCase = new GetThreadUseCase({ threadRepository: mockThreadRepository });
 
         // Action & Assert
@@ -42,10 +41,8 @@ describe('GetThreadUseCase', () => {
         const mockThreadRepository = new ThreadRepository();
         const mockCommentRepository = new CommentRepository();
 
-        mockThreadRepository.getById = jest.fn()
-            .mockImplementation(() => Promise.resolve(mockGetThread));
-        mockCommentRepository.getByThreadId = jest.fn()
-            .mockImplementation(() => Promise.resolve(mockGetComments));
+        mockThreadRepository.getById = jest.fn(() => Promise.resolve(mockGetThread));
+        mockCommentRepository.getByThreadId = jest.fn(() => Promise.resolve(mockGetComments));
 
         const getThreadUseCase = new GetThreadUseCase({
             threadRepository: mockThreadRepository,
@@ -100,10 +97,8 @@ describe('GetThreadUseCase', () => {
         const mockThreadRepository = new ThreadRepository();
         const mockCommentRepository = new CommentRepository();
 
-        mockThreadRepository.getById = jest.fn()
-            .mockImplementation(() => Promise.resolve(mockGetThread));
-        mockCommentRepository.getByThreadId = jest.fn()
-            .mockImplementation(() => Promise.resolve(mockGetComments));
+        mockThreadRepository.getById = jest.fn(() => Promise.resolve(mockGetThread));
+        mockCommentRepository.getByThreadId = jest.fn(() => Promise.resolve(mockGetComments));
 
         const getThreadUseCase = new GetThreadUseCase({
             threadRepository: mockThreadRepository,
